@@ -8,12 +8,13 @@
  * 
  */
 
-package com.vaadin.demo.dashboard;
+package com.vaadin.demo.dashboard.ui;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.vaadin.demo.dashboard.MovieDetailsWindow;
 import com.vaadin.demo.dashboard.data.DataProvider;
 import com.vaadin.demo.dashboard.data.DataProvider.Movie;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
@@ -57,6 +58,7 @@ import com.vaadin.ui.components.calendar.event.CalendarEvent;
 import com.vaadin.ui.components.calendar.event.CalendarEventProvider;
 import com.vaadin.ui.components.calendar.handler.BasicEventMoveHandler;
 import com.vaadin.ui.components.calendar.handler.BasicEventResizeHandler;
+import com.vaadin.demo.dashboard.ui.MainView;
 
 public class ScheduleView extends CssLayout implements View {
 
@@ -65,12 +67,12 @@ public class ScheduleView extends CssLayout implements View {
     private Window popup;
 
     // private CSSInject css;
-
+    MainView mainframe ;
     @Override
     public void enter(ViewChangeEvent event) {
         setSizeFull();
         addStyleName("schedule");
-
+        mainframe = ((MainView) getParent().getParent());
         // css = new CSSInject(UI.getCurrent());
 
         TabSheet tabs = new TabSheet();

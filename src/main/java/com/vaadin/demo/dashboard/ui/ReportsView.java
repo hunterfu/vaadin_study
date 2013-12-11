@@ -8,7 +8,7 @@
  * 
  */
 
-package com.vaadin.demo.dashboard;
+package com.vaadin.demo.dashboard.ui;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
@@ -19,6 +19,8 @@ import java.util.Set;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
+import com.vaadin.demo.dashboard.HelpManager;
+import com.vaadin.demo.dashboard.TopSixTheatersChart;
 import com.vaadin.demo.dashboard.data.Generator;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
@@ -67,16 +69,19 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.demo.dashboard.ui.MainView;
 
+@SuppressWarnings("serial")
 public class ReportsView extends HorizontalLayout implements View {
 
     private TabSheet editors;
-
+    MainView mainframe ;
+    
     @Override
     public void enter(ViewChangeEvent event) {
         setSizeFull();
         addStyleName("reports");
-
+        mainframe = ((MainView) getParent().getParent());
         addComponent(buildDraftsView());
     }
 
@@ -116,8 +121,7 @@ public class ReportsView extends HorizontalLayout implements View {
                     public void buttonClick(ClickEvent event) {
                         editors.removeComponent(tabContent);
                         draftCount--;
-                        ((DashboardUI) UI.getCurrent())
-                                .updateReportsButtonBadge(draftCount + "");
+                        mainframe.updateReportsButtonBadge(draftCount + "");
                         alert.close();
 
                     }
@@ -144,8 +148,7 @@ public class ReportsView extends HorizontalLayout implements View {
                     public void buttonClick(ClickEvent event) {
                         editors.removeComponent(tabContent);
                         draftCount--;
-                        ((DashboardUI) UI.getCurrent())
-                                .updateReportsButtonBadge(draftCount + "");
+                        mainframe.updateReportsButtonBadge(draftCount + "");
                         alert.close();
                         Notification
                                 .show("The report was saved as a draft",
@@ -259,7 +262,8 @@ public class ReportsView extends HorizontalLayout implements View {
 
         if (!helpShown) {
             helpShown = true;
-            HelpManager helpManager = ((DashboardUI) getUI()).getHelpManager();
+            //HelpManager helpManager = ((DashboardUI) getUI()).getHelpManager();
+            HelpManager helpManager = mainframe.helpManager;
             helpManager.addOverlay("Palette",
                     "Drag the items from the palette onto the canvas",
                     "palette");
@@ -282,8 +286,7 @@ public class ReportsView extends HorizontalLayout implements View {
                     + " (" + draftCount + ")");
         }
 
-        ((DashboardUI) UI.getCurrent()).updateReportsButtonBadge(draftCount
-                + "");
+        mainframe.updateReportsButtonBadge(draftCount + "");
 
         draftCount++;
 
@@ -592,8 +595,7 @@ public class ReportsView extends HorizontalLayout implements View {
                     }
                 };
                 t.setCaption("Top 10 Titles by Revenue");
-                t.setContainerDataSource(((DashboardUI) getUI()).dataProvider
-                        .getRevenueByTitle());
+                t.setContainerDataSource(mainframe.dataProvider.getRevenueByTitle());
                 t.setWidth("100%");
                 t.setPageLength(0);
                 t.addStyleName("plain");
@@ -637,8 +639,8 @@ public class ReportsView extends HorizontalLayout implements View {
                                 sourceComponent.getCaption(), null), this);
 
                 int index = 0;
-                Iterator<Component> componentIterator = layout
-                        .getComponentIterator();
+                Iterator<Component> componentIterator = layout.iterator();
+                        //.getComponentIterator();
                 Component next = null;
                 while (next != target && componentIterator.hasNext()) {
                     next = componentIterator.next();
@@ -662,8 +664,8 @@ public class ReportsView extends HorizontalLayout implements View {
                 // find the location where to move the dragged component
                 boolean sourceWasAfterTarget = true;
                 int index = 0;
-                Iterator<Component> componentIterator = layout
-                        .getComponentIterator();
+                Iterator<Component> componentIterator = layout.iterator();
+                        //.getComponentIterator();
                 Component next = null;
                 while (next != target && componentIterator.hasNext()) {
                     next = componentIterator.next();

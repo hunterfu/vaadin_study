@@ -72,7 +72,7 @@ public class HelpManager {
         // }
     }
 
-    protected HelpOverlay addOverlay(String caption, String text, String style) {
+    public HelpOverlay addOverlay(String caption, String text, String style) {
         HelpOverlay o = new HelpOverlay();
         o.setCaption(caption);
         o.addComponent(new Label(text, ContentMode.HTML));

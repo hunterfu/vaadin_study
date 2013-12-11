@@ -8,7 +8,7 @@
  * 
  */
 
-package com.vaadin.demo.dashboard;
+package com.vaadin.demo.dashboard.ui;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -20,6 +20,7 @@ import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.demo.dashboard.MovieDetailsWindow;
 import com.vaadin.demo.dashboard.data.DataProvider;
 import com.vaadin.demo.dashboard.data.TransactionsContainer;
 import com.vaadin.event.Action;
@@ -45,6 +46,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.demo.dashboard.ui.MainView;
 
 public class TransactionsView extends VerticalLayout implements View {
 
@@ -55,10 +57,12 @@ public class TransactionsView extends VerticalLayout implements View {
     Object editableId = null;
 
     TransactionsContainer data;
+    MainView mainframe ;
 
     @Override
     public void enter(ViewChangeEvent event) {
-        data = ((DashboardUI) getUI()).dataProvider.getTransactions();
+    		mainframe = ((MainView) getParent().getParent());
+        data = mainframe.dataProvider.getTransactions();
 
         setSizeFull();
         addStyleName("transactions");
@@ -347,7 +351,7 @@ public class TransactionsView extends VerticalLayout implements View {
     }
 
     void createNewReportFromSelection() {
-        ((DashboardUI) getUI()).openReports(t);
+    	mainframe.openReports(t);
     }
 
     void updatePriceFooter() {

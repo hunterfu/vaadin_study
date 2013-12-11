@@ -8,7 +8,7 @@
  * 
  */
 
-package com.vaadin.demo.dashboard;
+package com.vaadin.demo.dashboard.ui;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -30,7 +30,8 @@ import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
-
+import com.vaadin.demo.dashboard.ui.MainView;
+@SuppressWarnings("serial")
 public class SalesView extends VerticalLayout implements View {
 
     private Timeline timeline;
@@ -132,7 +133,8 @@ public class SalesView extends VerticalLayout implements View {
     }
 
     private void addDataSet(String title) {
-        IndexedContainer revenue = ((DashboardUI) getUI()).dataProvider
+    	MainView mainframe = ((MainView) getParent().getParent());
+        IndexedContainer revenue = mainframe.dataProvider
                 .getRevenueForTitle(title);
         timeline.addGraphDataSource(revenue, "timestamp", "revenue");
         colorIndex = (colorIndex >= colors.length - 1 ? 0 : ++colorIndex);
