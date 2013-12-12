@@ -2,7 +2,7 @@ package com.vaadin.demo.dashboard;
 
 import java.text.SimpleDateFormat;
 
-import com.vaadin.demo.dashboard.ScheduleView.MovieEvent;
+import com.vaadin.demo.dashboard.ui.ScheduleView.MovieEvent;
 import com.vaadin.demo.dashboard.data.DataProvider.Movie;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.event.dd.DragAndDropEvent;
