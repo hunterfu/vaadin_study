@@ -22,13 +22,13 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
-
+import com.vaadin.demo.dashboard.ui.DemoDataGenerator;
 @Theme("dashboard")
 @Title("QuickTickets Dashboard")
 public class DashboardUI extends UI {
 
 	public DataProvider dataProvider = new DataProvider();
-
+	public static final String PERSISTENCE_UNIT = "addressbook";
 	private static final long serialVersionUID = 1L;
 
 	CssLayout root = new CssLayout();
@@ -42,7 +42,7 @@ public class DashboardUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
 		getSession().setConverterFactory(new MyConverterFactory());
-
+		//DemoDataGenerator.create();
 		helpManager = new HelpManager(this);
 
 		setLocale(Locale.US);

@@ -3,13 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vaadin.demo</groupId>
 	<artifactId>quicktickets-dashboard</artifactId>
-	<version>1.0.1</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<productionMode>false</productionMode>
 		<vaadin.version>7.1.7</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+		<hibernate-version>4.2.8.Final</hibernate-version>
 	</properties>
 
 	<repositories>
@@ -102,6 +103,7 @@
 			<artifactId>vaadin-charts</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+        <!-- jpacontainer -->
 		<dependency>
 			<groupId>com.vaadin.addon</groupId>
 			<artifactId>jpacontainer</artifactId>
@@ -125,14 +127,96 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.2.0.Final</version>
+            <version>4.3.1.Final</version>
         </dependency>
+        <!-- hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb-j5</artifactId>
+            <version>2.2.4</version>
+         </dependency>
+           <!-- 
+           <dependency>
+			   <groupId>org.vaadin.addons</groupId>
+			   <artifactId>hbncontainer</artifactId>
+			   <version>2.0.1</version>
+			</dependency>
+            -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.5</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+            
+                                    
+        <dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.27</version>
+				</dependency>
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.vaadin.artur.widgetsetoptimizer</groupId> -->
 		<!-- <artifactId>widgetsetoptimizer</artifactId> -->
 		<!-- <version>0.1.0</version> -->
 		<!-- </dependency> -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                    <version>3.2.5.RELEASE</version>
+                    </dependency>
+                                
+      <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>3.2.5.RELEASE</version>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-beans</artifactId>
+    <version>3.2.5.RELEASE</version>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>3.2.5.RELEASE</version>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>3.2.5.RELEASE</version>
+   </dependency>
+   <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+	<version>3.2.5.RELEASE</version>
+</dependency>
+            
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.2.2</version>
+    </dependency>
 	</dependencies>
 
 	<build>

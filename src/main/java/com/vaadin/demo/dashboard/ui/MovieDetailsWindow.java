@@ -1,4 +1,4 @@
-package com.vaadin.demo.dashboard;
+package com.vaadin.demo.dashboard.ui;
 
 import java.text.SimpleDateFormat;
 

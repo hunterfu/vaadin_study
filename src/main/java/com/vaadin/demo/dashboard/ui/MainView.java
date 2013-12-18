@@ -2,15 +2,11 @@ package com.vaadin.demo.dashboard.ui;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
 
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Title;
+import com.vaadin.demo.dashboard.DashboardUI;
+import com.vaadin.demo.dashboard.HelpManager;
 import com.vaadin.demo.dashboard.data.DataProvider;
 import com.vaadin.demo.dashboard.data.Generator;
-import com.vaadin.demo.dashboard.data.MyConverterFactory;
-import com.vaadin.event.ShortcutAction.KeyCode;
-import com.vaadin.event.ShortcutListener;
 import com.vaadin.event.Transferable;
 import com.vaadin.event.dd.DragAndDropEvent;
 import com.vaadin.event.dd.DropHandler;
@@ -18,13 +14,10 @@ import com.vaadin.event.dd.acceptcriteria.AcceptCriterion;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.Page;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.AbstractSelect.AcceptItem;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -40,13 +33,9 @@ import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.NativeButton;
 import com.vaadin.ui.Notification;
-import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.Table;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.demo.dashboard.DashboardUI;
-import com.vaadin.demo.dashboard.HelpManager;
+
 
 @SuppressWarnings("serial")
 public class MainView extends HorizontalLayout {
@@ -66,15 +55,15 @@ public class MainView extends HorizontalLayout {
 			put("/transactions", TransactionsView.class);
 			put("/reports", ReportsView.class);
 			put("/schedule", ScheduleView.class);
+			put("/attention", AddressBookView.class);
 		}
 	};
 
 	HashMap<String, Button> viewNameToMenuButton = new HashMap<String, Button>();
 
 	private Navigator nav;
-    
+   
    public MainView(CssLayout menu,CssLayout content,DashboardUI dashboardui){
-
         setSizeFull();
         addStyleName("main-view");
         //init val
@@ -174,7 +163,7 @@ public class MainView extends HorizontalLayout {
 		menu.removeAllComponents();
 
 		for (final String view : new String[] { "dashboard", "sales",
-				"transactions", "reports", "schedule" }) {
+				"transactions", "reports", "schedule","attention" }) {
 			Button b = new NativeButton(view.substring(0, 1).toUpperCase()
 					+ view.substring(1).replace('-', ' '));
 			b.addStyleName("icon-" + view);

@@ -17,25 +17,35 @@
 		<param-name>productionMode</param-name>
 		<param-value>${productionMode}</param-value>
 	</context-param>
+	  <context-param>
+	  <description>Spring Config</description>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath*:applicationContext.xml</param-value>
+  </context-param>
 	<servlet>
 		<servlet-name>QuickTicketsDashboard</servlet-name>
 		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
 		<init-param>
 			<param-name>UI</param-name>
-			<param-value>com.vaadin.demo.dashboard.DashboardUI</param-value>
+			<param-value>com.vaadin.demo.vspring.SpringHelloWorld</param-value>
 		</init-param>
 		<init-param>
 			<param-name>widgetset</param-name>
-			<param-value>com.vaadin.demo.dashboard.DashboardWidgetSet</param-value>
+			<!-- <param-value>com.vaadin.demo.dashboard.SpringWidgetSet</param-value>-->
+			<param-value>com.vaadin.demo.dashboard.vspring.DefaultWidgetSet</param-value>
 		</init-param>
-		<init-param>
-			<param-name>UIProvider</param-name>
-			<param-value>com.vaadin.demo.dashboard.DashboardUIProvider</param-value>
-		</init-param>
+<!--
+        <init-param>
+            <param-name>UIProvider</param-name>
+            <param-value>com.vaadin.demo.dashboard.DashboardUIProvider</param-value>
+        </init-param>
+        -->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>QuickTicketsDashboard</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
-
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 </web-app>

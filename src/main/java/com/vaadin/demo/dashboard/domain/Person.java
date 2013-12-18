@@ -41,7 +41,7 @@ public class Person {
     private String city;
     private String zipCode;
     private String phoneNumber;
-    @NotNull
+    //@NotNull
     @ManyToOne
     private Department department;
 
