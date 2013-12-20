@@ -1,6 +1,7 @@
 package com.vaadin.demo.vspring;
 
-
+import org.springframework.stereotype.Component;
+@Component
 public class HelloWorld {
 
 
@@ -12,7 +13,7 @@ public class HelloWorld {
     this.message = message;
     }
         public void execute() {
-    System.out.println("Hello " + getMessage() + "!");
+    System.out.println("Hello bean" + getMessage() + "!");
     }
     
 }

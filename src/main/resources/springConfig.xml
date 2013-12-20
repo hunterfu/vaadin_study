@@ -10,11 +10,16 @@
     http://www.springframework.org/schema/context/spring-context-3.0.xsd 
     http://www.springframework.org/schema/tx 
     http://www.springframework.org/schema/tx/spring-tx.xsd">
-
+  <!-- <context:spring-configured /> -->
   <tx:annotation-driven />
   <context:component-scan base-package="com.vaadin.demo.vspring.daoimpl" />
   <context:component-scan base-package="com.vaadin.demo.vspring.serviceimpl" />
-
+  <context:component-scan base-package="com.vaadin.demo.vspring" />
+  <!-- 
+  Turn on @Autowired, @PostConstruct etc support  
+<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+-->
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
     destroy-method="close">
     <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -30,7 +35,7 @@
         <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
         <!-- <prop key="hibernate.current_session_context_class">thread</prop>  -->
         <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.hbm2ddl.auto">create</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
       </props>
     </property>
     <property name="packagesToScan" value="com.vaadin.demo.dashboard.domain" />
